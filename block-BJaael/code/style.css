@@ -33,3 +33,23 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.grid {
+  border: 1px solid black;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.heading {
+  margin: 1rem 0;
+  text-align: center;
+}
