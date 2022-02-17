@@ -2,9 +2,9 @@ let disco = document.querySelector(".disco");
 
 let getRandomColor = () => {
     let color = "#"
-    let hexChar = ["a", "b", "c", "d", "e", "f", '0', "1", "2", '3', "4", "5", "6", "7", "8", "9"]
+    let hexChar = ['0', "1", "2", '3', "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
     for (let i = 0; i < 6; i++) {
-        let randomNum = Math.floor(Math.random() * 6);
+        let randomNum = Math.floor(Math.random() * 16);
         color = color + hexChar[randomNum];
     }
     return color;
