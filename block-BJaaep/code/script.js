@@ -1,0 +1,1 @@
+let grids = document.querySelectorAll(".box");
