@@ -63,14 +63,7 @@ h1 {
     color: black;
 }
 
-h2 {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-h3 {
-    font-size: 2.8rem;
-    font-weight: 700;
+.display {
 }
 
 .calc {
@@ -83,7 +76,7 @@ h3 {
     max-width: 1260px;
 }
 
-.btn {
+button {
     border-radius: .4rem;
     height: 3.4rem;
     background-color: #cfcfcf;
@@ -92,7 +85,10 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 .flex {
@@ -114,28 +110,31 @@ h3 {
     align-self: stretch;
 }
 
-.result-box {
+.display {
     padding: 1rem 0;
     border-radius: .6rem;
     height: 3.4rem;
     background-color: black;
     margin: .5rem 0;
     color: white;
+    font-size: 2.6rem;
+    font-weight: 700;
     justify-content: flex-end;
     padding-right: 1.4rem;
 }
 
 
-.equal-btn {
-    height: 94%;
-    background-color: #018080;
-}
 
-.sign-btn {
+.row1 button {
     background-color: #710133;
     color: white;
 }
-.c-btn {
+.equal {
+    height: 94%;
+    width: 100%;
+    background-color: #018080;
+}
+.clear {
     background-color: #3D1B10;
     color: white;
 }

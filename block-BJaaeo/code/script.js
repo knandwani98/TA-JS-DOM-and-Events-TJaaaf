@@ -1,12 +1,24 @@
-let resultBox = document.querySelector(".result-box");
-let h3 = document.createElement("h3");
-let result = h3.innerText;
-resultBox.append(h3);
+let display = document.querySelector(".display");
+let initialValue = 0;
 
+display.innerText = initialValue;
 
-let allBtn = document.querySelectorAll(".btn");
+let allBtn = document.querySelectorAll("button");
 allBtn.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-        console.log(event.target);
-    })
+    function handleBtnClick (event) {
+        if (btn.classList.contains('clear')) {
+            return display.innerText = initialValue;
+        }
+        if (btn.classList.contains('equal')) {
+            display.innerText = eval(display.innerText);
+            return;
+        }
+        if(display.innerText == initialValue) {
+            display.innerText = event.target.innerText;
+            return
+        } else {
+            return display.innerText += event.target.innerText;
+        }
+    }
+    btn.addEventListener("click", handleBtnClick);
 })
