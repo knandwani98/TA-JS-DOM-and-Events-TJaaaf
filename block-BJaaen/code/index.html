@@ -4,8 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper and Scissors</title>
-  </head>
-  <body>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css">  </head>
+  <body class="container">
+    <header>
+    <h1>Rock Paper Scissors</h1>
+    </header>
+    <main>
+      <div>
+        <h2>You - <span class="player-score">4</span></h2>
+        <div class="ctrl player">
+          <i class="far fa-hand-rock"></i>
+          <i class="far fa-hand-paper"></i>
+          <i class="far fa-hand-scissors"></i>
+        </div>
+        <h2>Computer - <span class="computer-score">4</span></h2>
+        <div class="ctrl computer">
+          <i class="far fa-hand-rock"></i>
+          <i class="far fa-hand-paper"></i>
+          <i class="far fa-hand-scissors"></i>
+        </div>
+        <i class="fas fa-sync-alt reset-icon"></i>
+      </div>
+    </main>
     <script src="./script.js"></script>
   </body>
 </html>
