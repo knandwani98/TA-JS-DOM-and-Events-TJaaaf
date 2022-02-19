@@ -91,3 +91,22 @@ input[type='text'] {
 .terms {
   display: inline-block;
 }
+
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner {
+  background-color: white;
+  padding: 1.4rem;
+}
+
+h1 {
+  font-weight: 700;
+}
+h2 {
+  font-weight: 600;
+}
