@@ -1,4 +1,8 @@
 let form = document.querySelector("form");
+let modal = document.querySelector(".modal")
+modal.classList.add("close");
+
+
 
 let userId = {};
 
@@ -13,68 +17,46 @@ function handleForm (event) {
     userId.terms = form.elements.terms.checked;
      
 
-    form.parentElement.innerHTML = "";
-
-    function createUserIdLayout () {
-
-        let bg = document.createElement("div");
-        bg.className = "banner container";
-        let flex = document.createElement("div");
-        flex.className = "flex";
-        let emptyDiv = document.createElement("div");
-        let closeButton = document.createElement("button");
-        closeButton.innerText = "Close";
-        flex.append(emptyDiv, closeButton);
-
-        document.body.append(bg)
-        
-        let name = document.createElement("h1");
-        name.innerText = `Hello ${userId.name}`;
-        let email = document.createElement("h2");
-        email.innerText = `Email: ${userId.email}`
-        let youLove = document.createElement("h2");
-        youLove.innerText = `You Love: ${userId.loveToWatch}`
-        let color = document.createElement("h2");
-        color.innerText = `Color: ${userId.color}`
-        let rating = document.createElement("h2");
-        rating.innerText = `Rating: ${userId.rating}`
-        let bookGenre = document.createElement("h2");
-        bookGenre.innerText = `Book Genre: ${userId.genre}`
-        bg.append(flex, name, email, youLove, color, rating, bookGenre, bookGenre);
-
-
-        // function refreshForm(event) {
-            
-        // }
-
-        // closeButton.addEventListener("click", refreshForm)
-
-        if (userId.terms === true) {
-            let tAndC = document.createElement("h2");
-            bookGenre.innerText = "** You agree to Terms and Conditions **";
-            bg.append(tAndC);
-        }
-
-        {/* <div class="banner container">
-        <div class="flex">
-          <div></div>
-          <button>Close</button>
-        </div>
-        <h1>Hello Sameer</h1>
-        <h2>Email: <span>test@gmail.com</span></h2>
-        <h2>You Love : <span>Movies</span></h2>
-        <h2>Color: <span>#fffff</span></h2>
-        <h2>Rating: <span>#fffff</span></h2>
-        <h2>Book Genre: <span>#fffff</span></h2>
-        <h2>You agree to Terms and Conditions</h2>
-        </div> */}
-        return;
+    form.classList.add("close");
+    modal.classList.remove("close");
+    
+    let userName = document.querySelector(".user-name");
+    userName.innerText = `Hello ${userId.name}`;
+    let email = document.querySelector(".user-mail");
+    email.innerText = `Email: ${userId.email}`
+    
+    let youLove = document.querySelector(".user-love");
+    youLove.innerText = `You Love: ${userId.loveToWatch}`
+    
+    let color = document.querySelector(".user-color");
+    color.innerText = `Color: ${userId.color}`
+    
+    let rating = document.querySelector(".user-rating");
+    rating.innerText = `Rating: ${userId.rating}`
+    
+    let bookGenre = document.querySelector(".user-genre");
+    bookGenre.innerText = `Book Genre: ${userId.genre}`
+    
+    modal.append(userName, email, youLove, color, rating, bookGenre, bookGenre);
+    
+    
+    
+    if (userId.terms === true) {
+        let tAndC = document.querySelector(".terms");
+        bookGenre.innerText = "** You agree to Terms and Conditions **";
     }
+        
+    return;
 
-    createUserIdLayout ()
 }
 
 form.addEventListener("submit", handleForm);
 
 
 
+
+let closeBtn = document.querySelector(".close-btn");
+closeBtn.addEventListener("click", () => {
+    modal.classList.add("close");
+    form.classList.remove("close");
+})

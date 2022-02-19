@@ -110,3 +110,15 @@ h1 {
 h2 {
   font-weight: 600;
 }
+
+
+.close {
+  display: none;
+}
+
+.close-btn {
+  color: red;
+  outline: none;
+  border: none;
+  background-color: white;
+}
