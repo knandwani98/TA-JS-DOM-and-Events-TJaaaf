@@ -35,3 +35,22 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+
+input {
+  margin: 1rem;
+  padding: 1rem;
+  /* border: 1px solid black; */
+}
+
+input:focus {
+  border: none;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
