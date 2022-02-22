@@ -1,6 +1,7 @@
 /* CSS Reset */
 
 html {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   box-sizing: border-box;
   font-size: 16px;
 }
@@ -36,21 +37,36 @@ img {
   height: auto;
 }
 
-
 input {
-  margin: 1rem;
-  padding: 1rem;
-  /* border: 1px solid black; */
+  padding: 0.5rem;
+  display: flex;
+  border-radius: .4rem;
+  border: 1px solid black;
 }
 
-input:focus {
-  border: none;
+.success input{
+  border: 1.5px solid green;
 }
 
-input:valid {
-  border: 1px solid green;
+small{
+  color: red;
 }
 
-input:invalid {
-  border: 1px solid red;
+.error input{
+  border: 1.5px solid red;
+}
+
+label {
+  font-size: 1rem;
+  display: flex;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.container {
+  padding:2rem;
+}
+
+.btn {
+  margin-top: 2rem;
 }
