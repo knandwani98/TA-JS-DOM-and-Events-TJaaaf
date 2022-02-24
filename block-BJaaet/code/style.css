@@ -89,12 +89,16 @@ label {
 
 .flex {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.lni {
-    margin-right: 2rem;
+span {
+    margin-left: 1rem;
+    cursor: pointer;
+    color: red;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 900;
 }
 
 .movie {
