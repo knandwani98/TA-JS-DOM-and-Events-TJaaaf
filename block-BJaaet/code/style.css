@@ -73,7 +73,7 @@ h1 {
     font-weight: 600;
     border-radius: 0.5rem;
     font-size: 1.2rem;
-    width: 90%;
+    width: calc(100% - 2.1rem);
     border: 1px solid blueviolet;
 }
 
