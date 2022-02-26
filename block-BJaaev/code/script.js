@@ -7,8 +7,9 @@ let footer = root.nextElementSibling;
 let allTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 
-function createUI () {
-    allTodos.forEach((todo, index) => {
+function createUI (data = allTodos) {
+    root.innerHTML = "";
+    data.forEach((todo, index) => {
         let li = document.createElement("li");
         li.classList.add("flex");
         let div = document.createElement("div");
@@ -23,13 +24,12 @@ function createUI () {
         function toggleCheckbox (event) {
             let id = event.target.dataset.id;
             
-            allTodos[id].isDone = !allTodos[id].isDone;
+            data[id].isDone = !data[id].isDone;
 
-            localStorage.setItem("todos", JSON.stringify(allTodos));
+            localStorage.setItem("todos", JSON.stringify(data));
 
             createFooter();
         }
-
 
         input.addEventListener("input", toggleCheckbox);
 
@@ -41,13 +41,12 @@ function createUI () {
         span.setAttribute("data-id", index);
         span.innerText = "❌";
 
-
         function clickDelete(event) {
             root.innerHTML = "";
             let id = event.target.dataset.id;
-            allTodos.splice(id, 1);
+            data.splice(id, 1);
 
-            localStorage.setItem("todos", JSON.stringify(allTodos));
+            localStorage.setItem("todos", JSON.stringify(data));
 
             createUI();
             createFooter();
@@ -58,7 +57,7 @@ function createUI () {
         li.append(div, span);
         root.append(li);
 
-        localStorage.setItem("todos", JSON.stringify(allTodos));
+        localStorage.setItem("todos", JSON.stringify(data));
 
         createFooter();
     })
@@ -77,7 +76,7 @@ function createFooter () {
             itemLeft = itemLeft - 1;
         }
     })
-    
+
     if (allTodos.length >= 1) {
 
         footer.classList.add("flex", "list");
@@ -86,15 +85,57 @@ function createFooter () {
         let div = document.createElement("div");
         div.classList.add("flex");
         let spanAll = document.createElement("span");
-        spanAll.classList.add("selected");
+        spanAll.classList.add("all", "btn", "selected");
         spanAll.innerText = "All";
-
+        
         let spanActive = document.createElement("span");
         spanActive.innerText = "Active";
-
+        spanActive.classList.add("active", "btn");
+        
+        
         let spanCompleted = document.createElement("span");
         spanCompleted.innerText = "Completed";
+        spanCompleted.classList.add("completed", "btn");
         div.append(spanAll, spanActive, spanCompleted);
+
+
+        let all = document.querySelector(".all");
+        let active = document.querySelector(".active");
+        let completed = document.querySelector(".completed");
+        
+        function selectFilter(event) {
+
+            let allBtn = document.querySelectorAll(".btn");
+
+            allBtn.forEach((btn) => {
+                btn.classList.remove("selected");
+            });
+
+            createFooter();
+
+            let selectedElm = event.target;
+            if (selectedElm.innerText == "All") {
+                createUI(allTodos);
+            }
+
+            if (selectedElm.innerText == "Active") {
+                let active = allTodos.filter((todo) => !todo.isDone);
+                createUI(active);
+            }
+            
+            if (selectedElm.innerText == "Completed") {
+                let completed = allTodos.filter((todo) => todo.isDone);
+                createUI(completed);
+            }
+            
+            selectedElm.classList.add("selected");
+        }
+        
+        // Filter Active
+        spanAll.addEventListener("click", selectFilter);
+        spanActive.addEventListener("click", selectFilter);
+        spanCompleted.addEventListener("click", selectFilter);
+
 
         footer.append(span, div);
     }    
