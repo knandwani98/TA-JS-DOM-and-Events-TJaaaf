@@ -1,7 +1,152 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ------------------------------ */
+
 * {
   box-sizing: border-box;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.flex  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+
+.container {
+  max-width: 1000px;
+  padding: 1.5rem;
+  margin: 0 auto;
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+p {
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: linear-gradient(to right, #65C4F6, #9648E4);
+}
+
+.search_bar {
+  padding: .4rem;
+  width: 60%;
+  border: none;
+  border-radius: 4px;
+}
+
+.search_bar::placeholder {
+  font-style: italic;
+}
+
+.tags {
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.tags li {
+  margin: 0 .4rem;
+}
+
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  font-size: .7rem;
+  padding: .3rem .8rem;
+}
+
+.btn2 {
+  border-radius: 3px;
+  padding: .5rem 1.2rem;
+  margin: 1rem 0;
+  margin-bottom: 0.4rem;
+}
+
+.card {
+  text-align: center;
+  background-color: #B9DFE5;
+  border-radius: 8px;
+  padding: .5rem 1rem;
+  flex: 0 1 31%;
+  align-self: stretch;
+  margin-bottom: 1rem;
+}
+
+.card img {
+  border-radius: 50%;
+}
+
+section {
+  margin-top: 2rem;
 }
