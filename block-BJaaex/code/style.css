@@ -59,30 +59,49 @@ body {
 }
 
 .grid {
-    display: flex;
-    flex-wrap: wrap;
     max-width: 960px;
     margin: 0 auto;
+    display: flex; 
+    flex-wrap: wrap; 
     justify-content: space-evenly;
 }
 
 .card {
     margin: 5px;
     border: 4px solid #6589f9;
-    /* padding: 5px; */
+    position: relative;
+    transition:  all .4s linear;
+    transform-style: preserve-3d;
     background-color: #6589f9;
-    background: no-repeat;
+}
+
+.back, .card, .front {
+    height: 150px; 
+    width: 150px; 
+}
+
+.back, .front {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    z-index: 2;
+    background: #6589f9 url('../img/question.gif') no-repeat center center/ contain; 
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    width: 150px;
-    height: 150px;
+    background-color: #6589f9;
 }
 
 .selected {
-    border: 4px solid blue;
+    transform: rotateY(180deg);
 }
 
-.match {
-    border: 4px solid red;
-    background-image: none !important;
+.match .front{
+    background: rgba(0, 0, 0, 0.5) !important;
 }
