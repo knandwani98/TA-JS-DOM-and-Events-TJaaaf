@@ -7,67 +7,83 @@ let grid = document.querySelector(".grid");
 // doubling the cards
 let allCards = cardsArray.concat(cardsArray);
 
-// function createUI (dataArray = allCards) {
-    // }
+// sorting cards in random orders
+allCards.sort(() => 0.5 - Math.random());
 
-    allCards.sort(() => 0.5 - Math.random());
+let count = 0, firstGuess = "", secondGuess = '', previousTarget = null, delay = 1200;
+
 allCards.forEach(char => {
     // created div
+    const {name, img} = char;
+
     const card = document.createElement("div");
     // added class to div 
-    card.classList.add("card", "front");
-    card.setAttribute("data-name", char.name);
-    card.style.backgroundImage = `url(${char.img})`;
+    card.classList.add("card");
+    card.setAttribute("data-name", name);
     
+    const front = document.createElement('div');
+    front.classList.add("front");
+    
+    const back = document.createElement('div');
+    back.classList.add("back");
+    back.style.backgroundImage = `url(${img})`;
+
     // apended div into grid which is grid
     grid.appendChild(card);
-    return;
+    card.appendChild(front);
+    card.appendChild(back); 
+    // return;
 })
 
 // createUI();
 
+const match = () =>  {
+    const selected = document.querySelectorAll(".selected");
+    selected.forEach(card => {
+        card.classList.add("match");
+    });
+};
 
-// sorting cards in random orders
 
-let count = 0, firstGuess = "", secondGuess = '';
+function resetGuesses () {
+    firstGuess = '', secondGuess = '', count = 0, previousTarget = null;
+
+    var selected = document.querySelectorAll(".selected");
+    selected.forEach((card) => {
+        card.classList.remove('selected');
+    })
+    return;
+}
 
 
 grid.addEventListener("click", (event) => {
-    let clicked = event.target;
-
-    if(clicked.nodeName === "SECTION"){
+    
+    const clicked = event.target;
+    
+    if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
         return;
     }
     
+
     if (count < 2) {
         count++;
         if (count === 1) {
-            firstGuess = clicked.dataset.name;
-            clicked.classList.add('selected');
+            firstGuess = clicked.parentNode.dataset.name;
+            // console.log(firstGuess);
+            clicked.parentNode.classList.add('selected');
+        } else {
+            secondGuess = clicked.parentNode.dataset.name;
+            // console.log(secondGuess);
+            clicked.parentNode.classList.add('selected');
         }
-        else {
-            secondGuess = clicked.dataset.name;
-            clicked.classList.add('selected');
-        }
-    }
-
-    function match () {
-        var selected = document.querySelectorAll(".selected");
-        selected.forEach((card) => {
-            card.classList.add("match");
-        })
-    }
-
-    let previousTarget = null;
     
-    if (clicked.nodeName === 'SECTION' || clicked === previousTarget) {
-        return;
-    }
+        if (firstGuess && secondGuess ) {
+            if (firstGuess === secondGuess) {
+                setTimeout(match, delay);
+            }
 
-    if (firstGuess !== '' && secondGuess !== '') {
-        if (firstGuess === secondGuess) {
-            match();
+            setTimeout(resetGuesses, delay)
         }
         previousTarget = clicked;
-    }
-})
+    } 
+});
